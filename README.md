@@ -21,11 +21,11 @@ of news department and employees
 HOMEPAGE
 ![](src/main/resources/public/images/home.png)
 
-Animal form 
+department form 
 ![](src/main/resources/public/images/depform.png)
 
 
-Sighting form
+employees form
 ![](src/main/resources/public/images/employees.png)
 
 
