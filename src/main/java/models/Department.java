@@ -1,17 +1,21 @@
 package models;
 
+import org.sql2o.Connection;
+
 import java.util.Objects;
 
 public class Department {
     private String name;
     private String description;
-    private int no_OfEmployees;
+    private int no_ofemployees
+            ;
     private int id;
 
-    public Department(String name, String description, int no_OfEmployees) {
+    public Department(String name, String description, int no_ofemployees
+    ) {
         this.name = name;
         this.description = description;
-        this.no_OfEmployees = no_OfEmployees;
+        this.no_ofemployees = no_ofemployees;
     }
 
     public String getName() {
@@ -30,12 +34,12 @@ public class Department {
         this.description = description;
     }
 
-    public int getNo_OfEmployees() {
-        return no_OfEmployees;
+    public int getNo_ofemployees() {
+        return no_ofemployees;
     }
 
-    public void setNo_OfEmployees(int no_OfEmployees) {
-        this.no_OfEmployees = no_OfEmployees;
+    public void setNo_ofemployees(int no_ofemployees) {
+        this.no_ofemployees = no_ofemployees;
     }
 
     public int getId() {
@@ -51,7 +55,7 @@ public class Department {
         if (this == o) return true;
         if (!(o instanceof Department)) return false;
         Department that = (Department) o;
-        return no_OfEmployees == that.no_OfEmployees &&
+        return no_ofemployees == that.no_ofemployees &&
                 id == that.id &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(description, that.description);
@@ -59,6 +63,19 @@ public class Department {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, no_OfEmployees, id);
+        return Objects.hash(name, description, no_ofemployees, id);
+    }
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO  departments(name, description,no_ofemployees) VALUES (:name, :description, :no_ofemployees)";
+            this.id=(int) con.createQuery(sql,true)
+                    .addParameter("name", this.name)
+                    .addParameter("description", this.description)
+                    .addParameter("no_ofemployees", this.no_ofemployees)
+                    .executeUpdate()
+                    .getKey();
+
+        }
+
     }
 }

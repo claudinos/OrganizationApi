@@ -1,5 +1,7 @@
 package models;
 
+import org.sql2o.Connection;
+
 import java.util.Objects;
 
 public class News {
@@ -7,7 +9,7 @@ public class News {
     private String news;
     private int department_id;
 
-    public News(String news, int department_Id) {
+    public News(String news, int department_id) {
         this.news = news;
         this.department_id = department_id;
     }
@@ -28,12 +30,12 @@ public class News {
         this.news = news;
     }
 
-    public int getDepartment_Id() {
+    public int getDepartment_id() {
         return department_id;
     }
 
-    public void setDepartment_id(int department_Id) {
-        this.department_id = department_Id;
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
     }
 
     @Override
@@ -50,4 +52,18 @@ public class News {
     public int hashCode() {
         return Objects.hash(id, news, department_id);
     }
+
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO  news(news, department_id) VALUES (:news, :department_id)";
+            this.id=(int) con.createQuery(sql,true)
+                    .addParameter("news", this.news)
+                    .addParameter("department_id", this.department_id)
+                    .executeUpdate()
+                    .getKey();
+
+        }
+
+    }
+
 }

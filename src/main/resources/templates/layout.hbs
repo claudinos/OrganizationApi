@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "title"}}Organisation News{{/block}}</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/css/App.css'>
+
+</head>
+<body>
+<div>
+    <ul class="nav nav-tabs nav justify-content-end">
+        <li role="presentation"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/departments">Department</a></li>
+        <li role="presentation"><a href="/users">Employees</a></li>
+    </ul>
+
+    <div class="container">
+        <div class="col-md-8 offset-md-2">
+            {{#block "content"}}
+            {{/block}}
+
+        </div>
+    </div>
+</div>
+
+{{#block "footer"}}
+    </body>
+    </html>
+{{/block}}

@@ -1,6 +1,9 @@
-CREATE TABLE  departments(id SERIAL PRIMARY KEY,name VARCHAR,description VARCHAR,no_OfEmployees int);
+CREATE DATABASE organisation;
+\c organisation;
+CREATE TABLE  departments(id SERIAL PRIMARY KEY,name VARCHAR,description VARCHAR,no_ofemployees
+ int);
 
-CREATE TABLE news(id SERIAL PRIMARY KEY ,content VARCHAR,department_id INTEGER);
+CREATE TABLE news(id SERIAL PRIMARY KEY ,news VARCHAR,department_id INTEGER);
 
 CREATE TABLE  users(id SERIAL PRIMARY KEY ,name VARCHAR,position VARCHAR,roles VARCHAR);
 
