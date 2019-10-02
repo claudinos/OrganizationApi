@@ -28,6 +28,13 @@ department form
 employees form
 ![](src/main/resources/public/images/employees.png)
 
+newsform
+![](src/main/resources/public/images/new.png)
+
+database
+![](src/main/resources/public/images/database.png)
+
+
 
 
 ## Support and contact details
